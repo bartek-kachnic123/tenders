@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>System Przetargowy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<%- include('components/menu') %>
+
+<div class="max-w-3xl mx-auto p-6 mt-10 bg-white rounded shadow">
+  <h1 class="text-2xl font-bold mb-4">Witamy w systemie przetargowym</h1>
+  <p>System umożliwia zarządzanie przetargami, ich dodawanie i przeglądanie zarówno aktywnych, jak i zakończonych.</p>
+</div>
+
+</body>
 </html>
