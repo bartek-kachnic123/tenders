@@ -24,7 +24,7 @@ const getEndedTenders = async () => {
     });
 }
 
-const getTenderDetails = async (tenderId) => {
+const getTenderDetails = async (tenderId, options = {}) => {
     return await db.Tender.findByPk(tenderId, {
         include: [
             {
@@ -32,6 +32,7 @@ const getTenderDetails = async (tenderId) => {
                 as: 'offers',
             },
         ],
+        transaction: options.transaction
     });
 };
 
@@ -44,8 +45,8 @@ const isTenderExists = async (title, institutionName) => {
     return !!tender;
 }
 
-const getTenderById = async (tenderId) => {
-    return await db.Tender.findByPk(tenderId)
+const getTenderById = async (tenderId, options = {}) => {
+    return await db.Tender.findByPk(tenderId, { transaction: options.transaction });
 }
 
 

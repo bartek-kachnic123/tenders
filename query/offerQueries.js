@@ -1,7 +1,7 @@
 const db = require("../models/index");
 
 const createNewOffer = async (offer, options = {}) => {
-    await db.Offer.create(offer, options);
+    await db.Offer.create(offer, {transaction: options.transaction});
 }
 
 const getOffersById = async (tenderId) => {
