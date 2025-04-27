@@ -36,12 +36,13 @@ const getTenderDetails = async (tenderId, options = {}) => {
     });
 };
 
-const addNewTender = async (tender) => {
-    await db.Tender.create(tender);
+const addNewTender = async (tender, options = {}) => {
+    await db.Tender.create(tender, { transaction: options.transaction });
 }
 
-const isTenderExists = async (title, institutionName) => {
-    const tender = await db.Tender.findOne({ where: { title, institutionName } });
+const isTenderExists = async (title, institutionName, options = {}) => {
+    const tender = await db.Tender.findOne({ where: { title, institutionName },
+                                        transaction: options.transaction });
     return !!tender;
 }
 

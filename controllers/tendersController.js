@@ -36,26 +36,22 @@ const getTenderDetails = async (req, res, next) => {
 }
 
 const addNewTender = async (req, res, next) => {
-    const { title, institutionName} = req.body;
+    let message = null;
+    let errorMessage = null;
+    const MESSAGE_TENDER_ADDED = 'Dodano!';
+
     try {
         tendersService.validateTenderBody(req.body);
-        const exists = await tenderQueries.isTenderExists(title, institutionName)
-        if (exists) {
-            res.render('tender-add', {message: null, errorMessage: 'Podany tytuł i insytucja juz istnieje!'});
-        }
-
-        await tenderQueries.addNewTender(req.body);
-        res.render('tender-add', {message: 'Dodano!', errorMessage: null});
+        await tendersService.addTender(req.body);
+        message = MESSAGE_TENDER_ADDED;
     } catch(error) {
         if (error.status === 400) {
-            res.render('tender-add', {
-                message: null,
-                errorMessage: error.message
-            });
-            return;
+            errorMessage = error.message;
         }
-        next(error);
+        else next(error);
     }
+
+    res.render('tender-add', {message: message, errorMessage: errorMessage});
 }
 
 const getAddTender = async (req, res, next) => {

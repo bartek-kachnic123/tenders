@@ -1,4 +1,7 @@
 const validationService = require('./validationService');
+const tenderQueries = require("../query/tenderQueries");
+const db = require("../models/index");
+
 const createError = require("http-errors");
 
 const isTenderActive = (tender) => {
@@ -36,4 +39,18 @@ const validateTenderBody = (body) => {
 };
 
 
-module.exports = { isTenderActive, validateTenderBody }
+const addTender = async (tender) => {
+    const {title, institutionName} = tender;
+    return await db.sequelize.transaction(async (transaction) => {
+        const exists = await tenderQueries.isTenderExists(title, institutionName, { transaction });
+
+        if (exists) {
+            throw createError(400, 'Podany tytuł i instytucja już istnieją!');
+        }
+
+        await tenderQueries.addNewTender(tender, { transaction });
+    });
+};
+
+
+module.exports = { isTenderActive, validateTenderBody, addTender }
