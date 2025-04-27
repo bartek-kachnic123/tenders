@@ -1,6 +1,6 @@
 const tenderQueries = require("../query/tenderQueries");
 const tendersService = require("../services/tendersService");
-const offersService = require("../services/offersService");
+const offerQueries = require("../query/offerQueries");
 const createError = require("http-errors");
 
 const getTenders = async (req, res, next) => {
@@ -14,14 +14,18 @@ const getTenders = async (req, res, next) => {
 
 const getTenderDetails = async (req, res, next) => {
     try {
-        const tender = await tenderQueries.getTenderDetails(req.params.id);
+        const tenderId = req.params.id;
+        const tender = await tenderQueries.getTenderById(tenderId);
         if (!tender) {
             return next(createError(404));
         }
         const isTenderActive = tendersService.isTenderActive(tender);
 
-        if (!isTenderActive && tender.offers) {
-            tender.offers = offersService.filterAndSort(tender.offers, tender.maxPrice);
+        if (isTenderActive) {
+            tender.offers = await offerQueries.getOffersById(tenderId);
+        }
+        else {
+            tender.offers = await offerQueries.getOffersByIdFilterAndOrder(tenderId, tender.maxPrice);
         }
 
         res.render('tender-details', {tender: tender, isTenderActive: isTenderActive,

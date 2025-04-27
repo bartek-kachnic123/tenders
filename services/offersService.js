@@ -6,10 +6,4 @@ const validateOfferBody = (body) => {
     validationService.validatePrice(body.price);
 };
 
-const filterAndSort = (offers, maxPrice) => {
-    return offers
-        .filter(offer => parseFloat(offer.price) <= parseFloat(maxPrice))
-        .sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-}
-
-module.exports = { validateOfferBody, filterAndSort };
+module.exports = { validateOfferBody };
