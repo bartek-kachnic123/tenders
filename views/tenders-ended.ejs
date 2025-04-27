@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Przetargów</title>
+    <link rel="stylesheet" href="/stylesheets/tailwind.css">
+</head>
+<body class="bg-gray-50">
+
+<%- include('components/menu') %>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+    <h1 class="text-2xl font-bold mb-6">Lista Zakończonych Przetargów</h1>
+
+    <% if (endedTenders.length === 0) { %>
+        <p>Brak dostępnych przetargów.</p>
+    <% } else { %>
+        <div class="overflow-x-auto">
+            <table class="min-w-full border border-gray-300 bg-white shadow-md rounded-lg">
+                <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-2 border-b">Nr</th>
+                    <th class="px-4 py-2 border-b">Nazwa przetargu</th>
+                    <th class="px-4 py-2 border-b">Instytucja</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% endedTenders.forEach(function(tender, index){ %>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-2 border-b"><%= index + 1 %></td>
+                        <td class="px-4 py-2 border-b text-blue-600">
+                            <a href="/przetargi/id/<%= tender.id %>"><%= tender.title %></a>
+                        </td>
+                        <td class="px-4 py-2 border-b"><%= tender.institutionName %></td>
+
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+</div>
+
+</body>
+</html>
