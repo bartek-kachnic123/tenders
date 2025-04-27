@@ -1,4 +1,4 @@
-const db = require('./models/index');
+const db = require('../models/index');
 
 const getActiveTenders = async () => {
     const now = new Date();
@@ -18,10 +18,38 @@ const getEndedTenders = async () => {
     return await db.Tender.findAll({
         where: {
             offerEndDate: {
-                [db.Sequelize.Op.lt]: new Date()
+                [db.Sequelize.Op.lte]: new Date()
             }
         }
     });
 }
 
-module.exports = {getActiveTenders, getEndedTenders};
+const getTenderDetails = async (tenderId) => {
+    return await db.Tender.findByPk(tenderId, {
+        include: [
+            {
+                model: db.Offer,
+                as: 'offers',
+            },
+        ],
+    });
+};
+
+const addNewTender = async (tender) => {
+    await db.Tender.create(tender);
+}
+
+const isTenderExists = async (title, institutionName) => {
+    const tender = await db.Tender.findOne({ where: { title, institutionName } });
+    return !!tender;
+}
+
+const getTenderById = async (tenderId) => {
+    return await db.Tender.findByPk(tenderId)
+}
+
+
+module.exports = {
+    getActiveTenders, getEndedTenders, getTenderDetails, addNewTender,
+    isTenderExists, getTenderById
+};
