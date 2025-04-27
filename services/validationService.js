@@ -1,9 +1,14 @@
 const createError = require("http-errors");
 
 const validateFieldsFilled = (body, requiredFields) => {
+    let value;
     for (const field of requiredFields) {
-        const value = body[field];
-        if (value === undefined || value === null || (typeof value === 'string' && value.trim() === '')) {
+        value = body[field];
+        if (typeof value === 'string') {
+            value = value.trim();
+            body[field] = value;
+        }
+        if (value === undefined || value === null || (value === '')) {
             throw createError(400, 'Wszystkie pola są wymagane!');
         }
     }
