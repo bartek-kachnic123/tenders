@@ -2,13 +2,21 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <div class="flex-shrink-0 text-xl font-bold">
-                <a href="/">System Przetargowy</a>
+                <a href="/"><h1 class="">System Przetargowy</h1></a>
             </div>
             <div class="hidden md:flex space-x-4">
-                <a href="/" class="text-gray-700 hover:text-blue-600">Strona główna</a>
-                <a href="/przetargi" class="text-gray-700 hover:text-blue-600">Lista przetargów</a>
-                <a href="/przetargi/zakonczone" class="text-gray-700 hover:text-blue-600">Lista zakończonych przetargów</a>
-                <a href="/przetargi/dodaj" class="text-gray-700 hover:text-blue-600">Dodaj przetarg</a>
+                <a href="/" class="text-gray-700 hover:text-blue-600 hover:scale-105 border-b-2 border-transparent hover:border-b-2 hover:border-blue-600 transition-all">
+                    <i class="fas fa-home mr-2"></i> Strona główna
+                </a>
+                <a href="/przetargi" class="text-gray-700 hover:text-blue-600 hover:scale-105  border-b-2 border-transparent hover:border-b-2 hover:border-blue-600 transition-all">
+                    <i class="fas fa-list mr-2"></i> Lista przetargów
+                </a>
+                <a href="/przetargi/zakonczone" class="text-gray-700 hover:text-blue-600 hover:scale-105  border-b-2 border-transparent hover:border-b-2 hover:border-blue-600 transition-all">
+                    <i class="fas fa-check-circle mr-2"></i> Lista zakończonych przetargów
+                </a>
+                <a href="/przetargi/dodaj" class="text-gray-700 hover:text-blue-600 hover:scale-105    border-b-2 border-transparent hover:border-b-2 hover:border-blue-600 transition-all">
+                    <i class="fas fa-plus-circle mr-2"></i> Dodaj przetarg
+                </a>
             </div>
             <div class="md:hidden">
                 <button id="menu-toggle" class="text-gray-600 hover:text-blue-600 focus:outline-none">
@@ -17,10 +25,18 @@
             </div>
         </div>
         <div id="mobile-menu" class="md:hidden hidden flex-col mt-2 space-y-1">
-            <a href="/" class="block text-gray-700 hover:text-blue-600">Strona główna</a>
-            <a href="/przetargi" class="block text-gray-700 hover:text-blue-600">Lista przetargów</a>
-            <a href="/zakończone" class="block text-gray-700 hover:text-blue-600">Lista zakończonych przetargów</a>
-            <a href="/dodaj" class="block text-gray-700 hover:text-blue-600">Dodaj przetarg</a>
+            <a href="/" class="block text-gray-700 hover:text-blue-600 hover:scale-105 border-0 hover:border-b-2 hover:border-blue-600 transition-all">
+                <i class="fas fa-home mr-2"></i> Strona główna
+            </a>
+            <a href="/przetargi" class="block text-gray-700 hover:text-blue-600 hover:scale-105  hover:border-b-2 hover:border-blue-600 transition-all">
+                <i class="fas fa-list mr-2"></i> Lista przetargów
+            </a>
+            <a href="/przetargi/zakonczone" class="block text-gray-700 hover:text-blue-600 hover:scale-105  hover:border-b-2 hover:border-blue-600 transition-all">
+                <i class="fas fa-check-circle mr-2"></i> Lista zakończonych przetargów
+            </a>
+            <a href="/przetargi/dodaj" class="block text-gray-700 hover:text-blue-600 hover:scale-105  hover:border-b-2 hover:border-blue-600 transition-all">
+                <i class="fas fa-plus-circle mr-2"></i> Dodaj przetarg
+            </a>
         </div>
     </div>
     <script>

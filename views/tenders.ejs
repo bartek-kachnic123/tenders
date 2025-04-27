@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Przetargów</title>
+    <link rel="stylesheet" href="/stylesheets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/stylesheets/tailwind.css">
 </head>
 <body class="bg-gray-50">
@@ -15,21 +16,20 @@
     <% if (tenders.length === 0) { %>
         <p>Brak dostępnych przetargów.</p>
     <% } else { %>
-        <div class="overflow-x-auto">
-            <table class="min-w-full border border-gray-300 bg-white shadow-md rounded-lg">
+        <div class="hidden md:block overflow-x-auto">
+            <table class="min-w-full border border-gray-300 bg-white shadow-md rounded-lg text-sm md:text-base">
                 <thead class="bg-gray-100">
                 <tr>
-                    <th class="px-4 py-2 border-b">Nr</th>
-                    <th class="px-4 py-2 border-b">Nazwa przetargu</th>
-                    <th class="px-4 py-2 border-b">Instytucja</th>
-                    <th class="px-4 py-2 border-b">Data rozpoczęcia</th>
-                    <th class="px-4 py-2 border-b">Data zakończenia</th>
-
+                    <th class="px-4 py-2 border-b whitespace-nowrap">Nr</th>
+                    <th class="px-4 py-2 border-b whitespace-nowrap">Nazwa przetargu</th>
+                    <th class="px-4 py-2 border-b whitespace-nowrap">Instytucja</th>
+                    <th class="px-4 py-2 border-b whitespace-nowrap">Data rozpoczęcia</th>
+                    <th class="px-4 py-2 border-b whitespace-nowrap">Data zakończenia</th>
                 </tr>
                 </thead>
                 <tbody>
                 <% tenders.forEach(function(tender, index) { %>
-                    <tr class="hover:bg-gray-50">
+                    <tr class="hover:bg-gray-200 even:bg-indigo-50">
                         <td class="px-4 py-2 border-b"><%= index + 1 %></td>
                         <td class="px-4 py-2 border-b text-blue-600">
                             <a href="/przetargi/id/<%= tender.id %>"><%= tender.title %></a>
@@ -37,11 +37,24 @@
                         <td class="px-4 py-2 border-b"><%= tender.institutionName %></td>
                         <td class="px-4 py-2 border-b"><%= tender.offerStartDate.toLocaleString('pl-PL', { hour: '2-digit', minute: '2-digit', second: undefined, weekday: undefined, day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
                         <td class="px-4 py-2 border-b"><%= tender.offerEndDate.toLocaleString('pl-PL', { hour: '2-digit', minute: '2-digit', second: undefined, weekday: undefined, day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
-
                     </tr>
                 <% }) %>
                 </tbody>
             </table>
+        </div>
+
+        <div class="md:hidden space-y-4">
+            <% tenders.forEach(function(tender, index) { %>
+                <div class="bg-white p-4 shadow rounded-lg border border-gray-200">
+                    <p class="text-sm text-gray-500">Nr: <span class="font-medium"><%= index + 1 %></span></p>
+                    <p class="text-sm text-gray-500">Nazwa:
+                        <a href="/przetargi/id/<%= tender.id %>" class="text-blue-600 font-medium underline"><%= tender.title %></a>
+                    </p>
+                    <p class="text-sm text-gray-500">Instytucja: <span class="font-medium"><%= tender.institutionName %></span></p>
+                    <p class="text-sm text-gray-500">Start: <%= tender.offerStartDate.toLocaleString('pl-PL', { hour: '2-digit', minute: '2-digit', second: undefined, weekday: undefined, day: '2-digit', month: '2-digit', year: 'numeric' }) %></p>
+                    <p class="text-sm text-gray-500">Koniec: <%= tender.offerEndDate.toLocaleString('pl-PL', { hour: '2-digit', minute: '2-digit', second: undefined, weekday: undefined, day: '2-digit', month: '2-digit', year: 'numeric' }) %></p>
+                </div>
+            <% }) %>
         </div>
     <% } %>
 </div>

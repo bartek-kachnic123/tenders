@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>System Przetargowy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/stylesheets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/tailwind.css">
+
 </head>
 <body class="bg-gray-50">
 
 <%- include('components/menu') %>
-
-<div class="max-w-3xl mx-auto p-6 mt-10 bg-white rounded shadow">
-  <h1 class="text-2xl font-bold mb-4">Witamy w systemie przetargowym</h1>
-  <p>System umożliwia zarządzanie przetargami, ich dodawanie i przeglądanie zarówno aktywnych, jak i zakończonych.</p>
+<div class="relative max-w-3xl mx-auto p-6 mt-10 bg-white rounded shadow overflow-hidden">
+  <div class="relative z-10">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Witamy w systemie przetargowym</h1>
+    <p class="text-lg text-gray-700 mb-3">System umożliwia zarządzanie przetargami, ich dodawanie i przeglądanie zarówno aktywnych, jak i zakończonych.</p>
+    <p class="text-lg text-gray-700">System pozwala składać oferty na wybrane przertargi.</p>
+  </div>
 </div>
 
 </body>
