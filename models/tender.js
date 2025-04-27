@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     offerStartDate: DataTypes.DATE,
     offerEndDate: DataTypes.DATE,
     institutionName: DataTypes.STRING,
-    description: DataTypes.STRING
+    description: DataTypes.STRING,
+    maxPrice: DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'Tender',
