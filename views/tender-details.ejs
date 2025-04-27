@@ -45,7 +45,7 @@
                     <tr class="border-t hover:bg-gray-50">
                         <td class="px-4 py-2"><%= offer.submittedBy %></td>
                         <td class="px-4 py-2"><%= offer.price %> zł</td>
-                        <td class="px-4 py-2"><%= offer.createdAt.toLocaleString() %></td>
+                        <td class="px-4 py-2"><%= offer.createdAt.toLocaleString('pl-PL', { hour: '2-digit', minute: '2-digit', second: undefined, weekday: undefined, day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
                     </tr>
                 <% }) %>
                 </tbody>
