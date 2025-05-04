@@ -1,6 +1,6 @@
-const tenderQueries = require("../query/tenderQueries");
-const tendersService = require("../services/tendersService");
-const offersService = require("../services/offersService");
+const tenderQueries = require('../query/tenderQueries');
+const tendersService = require('../services/tendersService');
+const offersService = require('../services/offersService');
 
 
 const submitNewOffer = async (req, res, next) => {

@@ -1,6 +1,6 @@
 const validationService = require('./validationService');
-const tenderQueries = require("../query/tenderQueries");
-const db = require("../models/index");
+const tenderQueries = require('../query/tenderQueries');
+const db = require('../models/index');
 
 const createError = require("http-errors");
 

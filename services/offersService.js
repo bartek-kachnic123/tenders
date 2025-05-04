@@ -1,9 +1,9 @@
-const validationService = require("./validationService");
-const tenderQueries = require("../query/tenderQueries");
-const offerQueries = require("../query/offerQueries");
-const tendersService = require("../services/tendersService");
-const db = require("../models/index");
-const createError = require("http-errors");
+const validationService = require('./validationService');
+const tenderQueries = require('../query/tenderQueries');
+const offerQueries = require('../query/offerQueries');
+const tendersService = require('../services/tendersService');
+const db = require('../models/index');
+const createError = require('http-errors');
 
 const validateOfferBody = (body) => {
     const requiredFields = ['price', 'submittedBy'];

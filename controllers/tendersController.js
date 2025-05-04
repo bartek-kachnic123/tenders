@@ -1,7 +1,7 @@
-const tenderQueries = require("../query/tenderQueries");
-const tendersService = require("../services/tendersService");
-const offerQueries = require("../query/offerQueries");
-const createError = require("http-errors");
+const tenderQueries = require('../query/tenderQueries');
+const tendersService = require('../services/tendersService');
+const offerQueries = require('../query/offerQueries');
+const createError = require('http-errors');
 
 const getTenders = async (req, res, next) => {
     try {
